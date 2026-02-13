@@ -32,3 +32,23 @@ To discover API documentation, check the following common locations:
 <br>
 <img src="api_lab1.png" alt="Alt text" width="1000" height="900">
 </br>
+
+We can also use OpenAPI Parser BApp to get api documentation
+
+We can use Burp Scanner to crawl the application, then manually investigate interesting attack surface using Burp's browser. Another app like JS Link Finder BApp can be used to find out more hidden api
+#### Identifying supported HTTP methods
+An API endpoint may support different HTTP methods. It's therefore important to test all potential methods when you're investigating API endpoints. This may enable you to identify additional endpoint functionality, opening up more attack surface.
+For example, the endpoint /api/tasks may support the following methods:
+* GET /api/tasks - Retrieves a list of tasks.
+* POST /api/tasks - Creates a new task.
+* DELETE /api/tasks/1 - Deletes a task.
+
+
+#### Identifying supported content types
+API endpoints often expect data in a specific format. To change the content type, modify the Content-Type header, then reformat the request body accordingly. We can use the Content type converter BApp to automatically convert data submitted within requests between XML and JSON.
+
+**Lab: Finding and exploiting an unused API endpoint**
+<br>
+<img src="api_lab2.png" alt="Alt text" width="1000" height="900">
+</br>
+After this api patch we have to go to the website and add the item to cart and then buy it
