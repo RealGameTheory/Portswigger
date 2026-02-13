@@ -51,4 +51,10 @@ API endpoints often expect data in a specific format. To change the content type
 <br>
 <img src="api_lab2.png" alt="Alt text" width="1000" height="900">
 </br>
-After this api patch we have to go to the website and add the item to cart and then buy it
+After this api patch we have to go to the website and add the item to cart and then buy it.
+
+#### Finding hidden parameters
+When we're doing API recon, we may find undocumented parameters that the API supports. We can find these by:
+* The Param miner BApp enables us to automatically guess up to 65,536 param names per request. Param miner automatically guesses names that are relevant to the application, based on information taken from the scope.
+* Burp Intruder enables us to automatically discover hidden parameters, using a wordlist of common parameter names to replace existing parameters or add new parameters. Make sure we also include names that are relevant to the application, based on our initial recon.
+* The Content discovery tool enables us to discover content that isn't linked from visible content that we can browse to, including parameters.
