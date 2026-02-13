@@ -27,3 +27,8 @@ To discover API documentation, check the following common locations:
 
 **Additional Discovery:**
 * You can also use a list of common paths to find documentation using Intruder.
+
+**Lab: Exploiting an API endpoint using documentation**
+<br>
+<img src="api_lab1.png" alt="Alt text" width="1000" height="900">
+</br>
