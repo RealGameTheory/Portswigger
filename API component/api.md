@@ -167,3 +167,10 @@ The internal API interprets two name parameters. The impact of this depends on h
 
 
 If we're able to override the original parameter, e may be able to conduct an exploit. For example, we could add name=administrator to the request. This may enable us to log in as the administrator user.
+
+
+**Exploiting server-side parameter pollution in a query string**
+<br>
+<img src="api_lab4.png" alt="Alt text" width="1000" height="900">
+</br>
+>**Note**: https://portswigger.net/web-security/learning-paths/api-testing/api-testing-testing-for-server-side-parameter-pollution-in-the-query-string/api-testing/server-side-parameter-pollution/lab-exploiting-server-side-parameter-pollution-in-query-string#
