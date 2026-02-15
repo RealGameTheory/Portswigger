@@ -58,3 +58,69 @@ When we're doing API recon, we may find undocumented parameters that the API sup
 * The Param miner BApp enables us to automatically guess up to 65,536 param names per request. Param miner automatically guesses names that are relevant to the application, based on information taken from the scope.
 * Burp Intruder enables us to automatically discover hidden parameters, using a wordlist of common parameter names to replace existing parameters or add new parameters. Make sure we also include names that are relevant to the application, based on our initial recon.
 * The Content discovery tool enables us to discover content that isn't linked from visible content that we can browse to, including parameters.
+
+#### Mass assignment vulnerabilities
+
+Mass assignment (also known as auto-binding) can inadvertently create hidden parameters. It occurs when software frameworks automatically bind request parameters to fields on an internal object. Mass assignment may therefore result in the application supporting parameters that were never intended to be processed by the developer.
+
+#### Identifying hidden parameters
+
+By manually examining the Api we canfind them for example
+
+#### Identifying hidden parameters
+
+By manually examining the Api we canfind them for example
+
+Consider a `PATCH /api/users/` request has the following JSON:
+
+```json
+{
+    "username": "wiener",
+    "email": "wiener@example.com"
+}
+```
+
+A concurrent `GET /api/users/123` request returns the following JSON:
+
+```json
+{
+    "id": 123,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "isAdmin": "false"
+}
+```
+
+This may indicate that the hidden id and isAdmin parameters are bound to the internal user object, alongside the updated username and email parameters.
+
+#### Testing mass assignment vulnerabilities
+
+Modify the enumerated isAdmin parameter value, add it to the PATCH request:
+
+```
+{
+    "username": "wiener",
+    "email": "wiener@example.com",
+    "isAdmin": false,
+}
+```
+
+Send a PATCH request with an invalid isAdmin parameter value:
+
+```
+{
+    "username": "wiener",
+    "email": "wiener@example.com",
+    "isAdmin": "foo",
+}
+```
+This may indicate that the parameter can be successfully updated by the user.
+
+Therefore, we can try to see if we can get admin access
+```
+{
+    "username": "wiener",
+    "email": "wiener@example.com",
+    "isAdmin": true,
+}
+```
