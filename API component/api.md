@@ -129,3 +129,35 @@ Therefore, we can try to see if we can get admin access
 <br>
 <img src="api_lab3.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Testing for server-side parameter pollution in the query string
+
+To test for server-side parameter pollution in the query string, place query syntax characters like #, &, and = in the input and observe how the application responds. For example:
+
+<br>`GET /userSearch?name=peter&back=/home` as `GET /userSearch?name=peter%23foo&back=/home`</br>
+<br>`GET /users/search?name=peter&publicProfile=true` as `GET /users/search?name=peter#foo&publicProfile=true`(internally)</br>
+
+> **Important:** : It's essential that we URL-encode the # character. Otherwise the front-end application will interpret it as a fragment identifier and it won't be passed to the internal API.
+
+Review the response for clues about whether the query has been truncated. For example, if the response returns the user peter, the server-side query may have been truncated. If an Invalid name error message is returned, the application may have treated foo as part of the username. This suggests that the server-side request may not have been truncated.
+
+> **Note** : For information on how to identify parameters that you can inject into the query string, see the Finding hidden parameters section.
+#### Injecting Invalid/Valid paraneters:
+We could modify the query string to the following:
+
+`GET /userSearch?name=peter%26foo=xyz&back=/home`
+This results in the following server-side request to the internal API:
+
+`GET /users/search?name=peter&foo=xyz&publicProfile=true`
+Review the response for clues about how the additional parameter is parsed. For example, if the response is unchanged this may indicate that the parameter was successfully injected but ignored by the application.
+
+#### Overriding existing parameters
+
+The internal API interprets two name parameters. The impact of this depends on how the application processes the second parameter. This varies across different web technologies. For example:
+
+* PHP parses the last parameter only. This would result in a user search for carlos.
+* ASP.NET combines both parameters. This would result in a user search for peter,carlos, which might result in an Invalid username error message.
+* Node.js / express parses the first parameter only. This would result in a user search for peter, giving an unchanged result.
+
+
+If we're able to override the original parameter, e may be able to conduct an exploit. For example, we could add name=administrator to the request. This may enable us to log in as the administrator user.
