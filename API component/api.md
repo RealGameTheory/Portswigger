@@ -124,3 +124,8 @@ Therefore, we can try to see if we can get admin access
     "isAdmin": true,
 }
 ```
+**Lab: Exploiting a mass assignment vulnerability**
+
+<br>
+<img src="api_lab3.png" alt="Alt text" width="1000" height="900">
+</br>
