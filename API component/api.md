@@ -174,3 +174,21 @@ If we're able to override the original parameter, e may be able to conduct an ex
 <img src="api_lab4.png" alt="Alt text" width="1000" height="900">
 </br>
 >**Note**: https://portswigger.net/web-security/learning-paths/api-testing/api-testing-testing-for-server-side-parameter-pollution-in-the-query-string/api-testing/server-side-parameter-pollution/lab-exploiting-server-side-parameter-pollution-in-query-string#
+####Testing for server-side parameter pollution in REST paths
+
+Consider an application that enables us to edit user profiles based on their username. Requests are sent to the following endpoint:
+<br>`GET /edit_profile.php?name=peter`</br>
+
+This results in the following server-side request:
+<br>`GET /api/private/users/peter`</br>
+
+Another example:
+
+We could submit URL-encoded peter/../admin as the value of the name parameter:
+<br>`GET /edit_profile.php?name=peter%2f..%2fadmin`</br>
+
+This may result in the following server-side request:
+<br>`GET /api/private/users/peter/../admin`</br>
+If the server-side client or back-end API normalize this path, it may be resolved to /api/private/users/admin.
+
+#### [Testing for server-side parameter pollution in structured data formats](https://portswigger.net/web-security/learning-paths/api-testing/api-testing-testing-for-server-side-parameter-pollution-in-structured-data-formats/api-testing/server-side-parameter-pollution/testing-for-server-side-parameter-pollution-in-structured-data-formats)
