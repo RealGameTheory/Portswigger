@@ -143,15 +143,21 @@ Review the response for clues about whether the query has been truncated. For ex
 
 > **Note** : For information on how to identify parameters that you can inject into the query string, see the Finding hidden parameters section.
 #### Injecting Invalid/Valid paraneters:
+
 We could modify the query string to the following:
+<br>`GET /userSearch?name=peter%26foo=xyz&back=/home`</br>
 
-`GET /userSearch?name=peter%26foo=xyz&back=/home`
 This results in the following server-side request to the internal API:
+<br>`GET /users/search?name=peter&foo=xyz&publicProfile=true`</br>
 
-`GET /users/search?name=peter&foo=xyz&publicProfile=true`
 Review the response for clues about how the additional parameter is parsed. For example, if the response is unchanged this may indicate that the parameter was successfully injected but ignored by the application.
 
 #### Overriding existing parameters
+For example, we could modify the query string to the following:
+<br>`GET /userSearch?name=peter%26name=carlos&back=/home`</br>
+
+This results in the following server-side request to the internal API:
+<br>`GET /users/search?name=peter&name=carlos&publicProfile=true`</br>
 
 The internal API interprets two name parameters. The impact of this depends on how the application processes the second parameter. This varies across different web technologies. For example:
 
