@@ -197,3 +197,13 @@ Clairvoyance is a tool that uses suggestions to automatically recover all or par
 
 After this we take data in the post password and put it in the submit option in the website.
 
+#### Lab: Accidental exposure of private GraphQL fields
+<br>
+<img src="graphqlapi_lab2_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+<br>
+<img src="graphqlapi_lab2_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+After logging into administrator's account go to admin panel and then delete the user carlos.
