@@ -185,3 +185,15 @@ Even if introspection is entirely disabled, we can sometimes use suggestions to 
 Suggestions are a feature of the Apollo GraphQL platform in which the server can suggest query amendments in error messages. These are generally used where a query is slightly incorrect but still recognizable (for example, `There is no entry for 'productInfo'. Did you mean 'productInformation' instead?`).
 
 Clairvoyance is a tool that uses suggestions to automatically recover all or part of a GraphQL schema, even when introspection is disabled.
+
+#### Lab: Accessing private GraphQL posts
+<br>
+<img src="graphqlapi_lab1_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+<br>
+<img src="graphqlapi_lab1_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+After this we take data in the post password and put it in the submit option in the website.
+
