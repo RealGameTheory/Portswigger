@@ -207,3 +207,26 @@ After this we take data in the post password and put it in the submit option in 
 </br>
 
 After logging into administrator's account go to admin panel and then delete the user carlos.
+
+#### Bypassing GraphQL introspection defenses
+
+When developers disable introspection, they could use a regex to exclude the __schema keyword in queries. We should try characters like spaces, new lines and commas, as they are ignored by GraphQL but not by flawed regex.
+
+example:
+```
+    #Introspection query with newline
+
+    {
+        "query": "query{__schema
+        {queryType{name}}}"
+    }
+```
+
+If this doesn't work, try running the probe over an alternative request method, as introspection may only be disabled over POST. Try a GET request, or a POST request with a content-type of `x-www-form-urlencoded`.
+
+The example below shows an introspection probe sent via GET, with URL-encoded parameters.
+```
+# Introspection probe as GET request
+
+    GET /graphql?query=query%7B__schema%0A%7BqueryType%7Bname%7D%7D%7D
+```
