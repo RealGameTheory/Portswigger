@@ -232,3 +232,16 @@ The example below shows an introspection probe sent via GET, with URL-encoded pa
 ```
 >**IMP** : https://graphql.org/learn/introspection/
 > **Very imp** : https://github.com/swisskyrepo/PayloadsAllTheThings
+
+#### Lab: Finding a hidden GraphQL endpoint
+
+<br>
+<img src="graphqlapi_lab3_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+<br>
+<img src="graphqlapi_lab3_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+#### Bypassing rate limiting using aliases
+Aliases enables us to bypass this restriction by explicitly naming the properties we want the API to return. We can use aliases to return multiple instances of the same type of object in one request.
