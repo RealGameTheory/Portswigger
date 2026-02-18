@@ -230,3 +230,5 @@ The example below shows an introspection probe sent via GET, with URL-encoded pa
 
     GET /graphql?query=query%7B__schema%0A%7BqueryType%7Bname%7D%7D%7D
 ```
+>**IMP** : https://graphql.org/learn/introspection/
+> **Very imp** : https://github.com/swisskyrepo/PayloadsAllTheThings
