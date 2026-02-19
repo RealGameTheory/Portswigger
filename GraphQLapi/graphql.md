@@ -306,3 +306,12 @@ After finding this We use the html code [exploit](https://github.com/RealGameThe
 <br>
 <img src="graphqlapi_lab5_2.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Preventing GraphQL attacks
+* Disable introspection, suggestions and the schema displayed does not expose any private information.
+* Limit the query depth of our API's queries.
+* Configure operation limits.
+* Configure the maximum amount of bytes a query can contain.
+* API only accepts queries over JSON-encoded POST.
+* The API validates that content provided matches the supplied content type.
+* The API has a secure CSRF token mechanism.
