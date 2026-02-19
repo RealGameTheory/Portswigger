@@ -294,3 +294,15 @@ POST requests that use a content type of `application/json` are secure against f
 However, alternative methods such as GET, or any request that has a content type of `x-www-form-urlencoded`, can be sent by a browser and so may leave users vulnerable to attack if the endpoint accepts these requests. Where this is the case, attackers may be able to craft exploits to send malicious requests to the API.
 
 >The steps to construct a CSRF attack and deliver an exploit are the same for GraphQL-based CSRF vulnerabilities as they are for "regular" CSRF vulnerabilities.
+
+#### Lab: Performing CSRF exploits over GraphQL
+
+<br>
+<img src="graphqlapi_lab5_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+After finding this We use the html code [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/GraphQLapi/gqlapilab5exploit.html) and we get the following output
+
+<br>
+<img src="graphqlapi_lab5_2.png" alt="Alt text" width="1000" height="900">
+</br>
