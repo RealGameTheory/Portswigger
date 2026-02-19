@@ -14,3 +14,26 @@ Many modern websites use CORS to allow access from subdomains and trusted third 
 
 #### Lab: CORS vulnerability with basic origin reflection
 
+In this you can see origin can be changed.
+
+<br>
+<img src="corslab1_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+In this I put the html code [exploit]{https://github.com/RealGameTheory/Portswigger/blob/main/cors/corsexplab1.html} into the server exploit and then check the access logs.
+
+<br>
+<img src="corslab1_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Decoding the data I got (api visible here too).
+
+<br>
+<img src="corslab1_3.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Replacing with the session key to login as admin (api visible here too).
+
+<br>
+<img src="corslab1_4.png" alt="Alt text" width="1000" height="900">
+</br>
