@@ -20,7 +20,7 @@ In this you can see origin can be changed.
 <img src="corslab1_1.png" alt="Alt text" width="1000" height="900">
 </br>
 
-In this I put the html code [exploit]{https://github.com/RealGameTheory/Portswigger/blob/main/cors/corsexplab1.html} into the server exploit and then check the access logs.
+In this I put the html code [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/cors/corslab1.html) into the server exploit and then check the access logs.
 
 <br>
 <img src="corslab1_2.png" alt="Alt text" width="1000" height="900">
@@ -109,3 +109,15 @@ The specification for the Origin header supports the value `null`. Browsers migh
 * Sandboxed cross-origin requests.
 
 #### Lab: CORS vulnerability with trusted null origin
+We verify by puting null in origin.
+<br>
+<img src="corslab2_1.png" alt="Alt text" width="1000" height="900">
+</br>
+We use the following html code [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/cors/corslab2.html) and see the logs
+<br>
+<img src="corslab2_2.png" alt="Alt text" width="1000" height="900">
+</br>
+We then decode the data we get
+<br>
+<img src="corslab2_3.png" alt="Alt text" width="1000" height="900">
+</br>
