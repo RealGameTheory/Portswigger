@@ -109,15 +109,68 @@ The specification for the Origin header supports the value `null`. Browsers migh
 * Sandboxed cross-origin requests.
 
 #### Lab: CORS vulnerability with trusted null origin
+
 We verify by puting null in origin.
+
 <br>
 <img src="corslab2_1.png" alt="Alt text" width="1000" height="900">
 </br>
+
 We use the following html code [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/cors/corslab2.html) and see the logs
+
 <br>
 <img src="corslab2_2.png" alt="Alt text" width="1000" height="900">
 </br>
+
 We then decode the data we get
+
 <br>
 <img src="corslab2_3.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Exploiting XSS via CORS trust relationships
+
+ If a website trusts an origin that is vulnerable to cross-site scripting (XSS), then an attacker could exploit the XSS to inject some JavaScript that uses CORS to retrieve sensitive information from the site that trusts the vulnerable application.
+
+ Example:
+
+ ```
+GET /api/requestApiKey HTTP/1.1
+Host: vulnerable-website.com
+Origin: https://subdomain.vulnerable-website.com
+Cookie: sessionid=...
+```
+
+Response:
+
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://subdomain.vulnerable-website.com
+Access-Control-Allow-Credentials: true
+```
+Then an attacker who finds an XSS vulnerability on `subdomain.vulnerable-website.com` could use that to retrieve the API key, using a URL like:
+
+```
+https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>
+```
+
+#### Breaking TLS with poorly configured CORS
+
+Suppose an application that rigorously employs HTTPS also whitelists a trusted subdomain that is using plain HTTP. For example, when the application receives the following request:
+
+```
+GET /api/requestApiKey HTTP/1.1
+Host: vulnerable-website.com
+Origin: http://trusted-subdomain.vulnerable-website.com
+Cookie: sessionid=...
+```
+
+Responds with:
+
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://trusted-subdomain.vulnerable-website.com
+Access-Control-Allow-Credentials: true
+```
+
+#### Lab: CORS vulnerability with trusted insecure protocols
