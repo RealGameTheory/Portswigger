@@ -174,3 +174,29 @@ Access-Control-Allow-Credentials: true
 ```
 
 #### Lab: CORS vulnerability with trusted insecure protocols
+
+Insecure portocol using http here
+<br>
+<img src="corslab3_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+XSS vulnerability
+<br>
+<img src="corslab3_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Encoding the html code [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/cors/corslab3.html)
+<br>
+<img src="corslab3_3.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Access logs
+<br>
+<img src="corslab3_4.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Decoding the data
+<br>
+<img src="corslab3_5.png" alt="Alt text" width="1000" height="900">
+</br>
+
