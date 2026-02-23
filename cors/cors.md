@@ -200,3 +200,32 @@ Decoding the data
 <img src="corslab3_5.png" alt="Alt text" width="1000" height="900">
 </br>
 
+#### Intranets and CORS without credentials
+
+Most CORS attacks rely on the presence of the response header:
+`Access-Control-Allow-Credentials: true`
+
+Without that header, the victim user's browser will refuse to send their cookies, meaning the attacker will only gain access to unauthenticated content, which they could just as easily access by browsing directly to the target website. However, there is one common situation where an attacker can't access a website directly: when it's part of an organization's intranet, and located within private IP address space.
+
+For example:
+```
+GET /reader?url=doc1.pdf
+Host: intranet.normal-website.com
+Origin: https://normal-website.com
+```
+
+We get the response:
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+```
+
+#### How to prevent CORS-based attacks
+
+CORS vulnerabilities arise primarily as misconfigurations. Prevention is therefore a configuration problem. The following points describe some effective defenses against CORS attacks:
+
+* Proper configuration of cross-origin requests
+* Only allow trusted sites
+* Only allow trusted sites
+* Avoid wildcards in internal networks
+* CORS is not a substitute for server-side security policies
