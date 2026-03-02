@@ -65,3 +65,11 @@ Clickjacking attacks are possible whenever websites can be framed. Therefore, pr
 An effective attacker workaround against frame busters is to use the HTML5 iframe sandbox attribute. When this is set with the `allow-forms` or `allow-scripts` values and the `allow-top-navigation` value is omitted then the frame buster script can be neutralized as the iframe cannot check whether or not it is the top window:
 
 `<iframe id="victim_website" src="https://victim-website.com" sandbox="allow-forms"></iframe>`
+
+#### Lab: Clickjacking with a frame buster script
+
+We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/Clickjacking/exp3_lab3.html)
+
+<br>
+<img src="lab3_1.png" alt="Alt text" width="1000" height="900">
+</br>
