@@ -73,3 +73,26 @@ We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/
 <br>
 <img src="lab3_1.png" alt="Alt text" width="1000" height="900">
 </br>
+
+**Combining clickjacking with a DOM XSS attack**
+The XSS exploit is combined with the iframe target URL so that the user clicks on the button or link and consequently executes the DOM XSS attack.
+
+#### Lab: Exploiting clickjacking vulnerability to trigger DOM-based XSS
+
+Trying out to see if XSS is possible in the feedback form
+
+<br>
+<img src="lab4_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+The XSS working:
+
+<br>
+<img src="lab4_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/Clickjacking/exp4_lab4.html)
+
+<br>
+<img src="lab4_3.png" alt="Alt text" width="1000" height="900">
+</br>
