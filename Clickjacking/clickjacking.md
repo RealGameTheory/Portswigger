@@ -43,3 +43,12 @@ We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/
 <br>
 <img src="lab1_1.png" alt="Alt text" width="1000" height="900">
 </br>
+
+
+#### Lab: Clickjacking with form input data prefilled from a URL parameter
+
+We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/Clickjacking/exp2_lab2.html)
+
+<br>
+<img src="lab2_1.png" alt="Alt text" width="1000" height="900">
+</br>
