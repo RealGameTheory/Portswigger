@@ -52,3 +52,16 @@ We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/
 <br>
 <img src="lab2_1.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Frame busting scripts
+
+Clickjacking attacks are possible whenever websites can be framed. Therefore, preventative techniques are based upon restricting the framing capability for websites. A common client-side protection enacted through the web browser is to use frame busting or frame breaking scripts. These can be implemented via proprietary browser JavaScript add-ons or extensions such as NoScript. Scripts are often crafted so that they perform some or all of the following behaviors:
+
+* check and enforce that the current application window is the main or top window
+* make all frames visible
+* prevent clicking on invisible frames
+* intercept and flag potential clickjacking attacks to the user
+
+An effective attacker workaround against frame busters is to use the HTML5 iframe sandbox attribute. When this is set with the `allow-forms` or `allow-scripts` values and the `allow-top-navigation` value is omitted then the frame buster script can be neutralized as the iframe cannot check whether or not it is the top window:
+
+`<iframe id="victim_website" src="https://victim-website.com" sandbox="allow-forms"></iframe>`
