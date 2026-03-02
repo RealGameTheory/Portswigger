@@ -36,3 +36,10 @@ An example using the style tag and parameters is as follows:
 </body>
 ```
 
+#### Lab: Basic clickjacking with CSRF token protection
+
+We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/Clickjacking/exp1_lab1.html)
+
+<br>
+<img src="lab1_1.png" alt="Alt text" width="1000" height="900">
+</br>
