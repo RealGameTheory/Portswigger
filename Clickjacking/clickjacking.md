@@ -96,3 +96,20 @@ We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/
 <br>
 <img src="lab4_3.png" alt="Alt text" width="1000" height="900">
 </br>
+
+#### Multistep clickjacking
+
+Attacker manipulation of inputs to a target website may necessitate multiple actions. For example, an attacker might want to trick a user into buying something from a retail website so items need to be added to a shopping basket before the order is placed. These actions can be implemented by the attacker using multiple divisions or iframes. Such attacks require considerable precision and care from the attacker perspective if they are to be effective and stealthy.
+
+#### Lab: Multistep clickjacking
+
+We can use the this web [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/Clickjacking/exp5_lab5.html)
+
+
+<br>
+<img src="lab5_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+<br>
+<img src="lab5_2.png" alt="Alt text" width="1000" height="900">
+</br>
