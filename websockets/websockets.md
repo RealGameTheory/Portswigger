@@ -128,3 +128,5 @@ Then we login to carlos's account.
 <br>
 <img src="websocket_lab_3.png" alt="Alt text" width="1000" height="900">
 </br>
+
+>**Note**: Mitigations(https://portswigger.net/web-security/learning-paths/websockets-security-vulnerabilities/how-to-secure-a-websocket-connection/websockets/how-to-secure-a-websocket-connection)
