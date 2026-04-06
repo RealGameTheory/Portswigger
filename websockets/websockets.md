@@ -101,3 +101,30 @@ If the WebSocket handshake request is vulnerable to CSRF, then an attacker's web
 * Sending WebSocket messages to perform unauthorized actions on behalf of the victim user.
 * Sending WebSocket messages to retrieve sensitive data.
 * Sometimes, just waiting for incoming messages to arrive containing sensitive data.
+
+## Lab: Cross-site WebSocket hijacking
+First we find out that the chat history is tied with the cookie.
+
+First I create and [exploit](https://github.com/RealGameTheory/Portswigger/blob/main/websockets/exp1.html).
+
+<br>
+<img src="websocket_lab_3_1.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Then we find the messages in base64 form.
+
+<br>
+<img src="websocket_lab_3_2.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Then we decrypt the messages to find the password for carlos.
+
+<br>
+<img src="websocket_lab_3_3.png" alt="Alt text" width="1000" height="900">
+</br>
+
+Then we login to carlos's account.
+
+<br>
+<img src="websocket_lab_3.png" alt="Alt text" width="1000" height="900">
+</br>
